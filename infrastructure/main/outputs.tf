@@ -5,3 +5,7 @@ output "bucket_name" {
 output "bucket_arn" {
   value = aws_s3_bucket.site.arn
 }
+
+output "cloudfront_domain" {
+  value = aws_cloudfront_distribution.site.domain_name
+}
