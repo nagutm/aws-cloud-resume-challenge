@@ -121,3 +121,14 @@ resource "aws_route53_record" "site" {
   }
 }
 
+resource "aws_dynamodb_table" "visits" {
+  name         = "resume-visits"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "id"
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+}
+
