@@ -132,3 +132,60 @@ resource "aws_dynamodb_table" "visits" {
   }
 }
 
+resource "aws_iam_role" "lambda" {
+  name = "resume-lambda-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = { Service = "lambda.amazonaws.com" }
+      Action = "sts:AssumeRole"
+    }]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_logs" {
+  role       = aws_iam_role.lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_iam_role_policy" "lambda_dynamodb" {
+  name = "resume-lambda-dynamodb"
+  role = aws_iam_role.lambda.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Action = [
+        "dynamodb:UpdateItem",
+        "dynamodb:GetItem",
+      ]
+      Resource = aws_dynamodb_table.visits.arn
+    }]
+  })
+}
+
+
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_dir  = "${path.module}/../../backend/lambda"
+  output_path = "${path.module}/lambda.zip"
+}
+
+resource "aws_lambda_function" "counter" {
+  function_name    = "resume-counter"
+  role             = aws_iam_role.lambda.arn
+  handler          = "handler.lambda_handler"
+  runtime          = "python3.12"
+  filename         = data.archive_file.lambda_zip.output_path
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+
+  environment {
+    variables = {
+      TABLE_NAME = aws_dynamodb_table.visits.name
+    }
+  }
+}
+
