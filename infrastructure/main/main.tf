@@ -195,7 +195,7 @@ resource "aws_apigatewayv2_api" "api" {
   protocol_type = "HTTP"
 
   cors_configuration {
-    allow_origins = ["*"]   # we'll lock this down in 4.5
+    allow_origins = ["https://resume-mufaddal.com"]
     allow_methods = ["GET"]
     allow_headers = ["content-type"]
     max_age       = 3600
