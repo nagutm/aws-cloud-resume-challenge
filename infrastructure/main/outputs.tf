@@ -9,3 +9,7 @@ output "bucket_arn" {
 output "cloudfront_domain" {
   value = aws_cloudfront_distribution.site.domain_name
 }
+
+output "api_url" {
+  value = "${aws_apigatewayv2_api.api.api_endpoint}/count"
+}
