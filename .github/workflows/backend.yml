@@ -19,5 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Hello
-        run: echo "Workflow ran successfully"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        working-directory: backend
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests
+        working-directory: backend
+        run: pytest -v
