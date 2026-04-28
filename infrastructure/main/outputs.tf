@@ -13,3 +13,7 @@ output "cloudfront_domain" {
 output "api_url" {
   value = "${aws_apigatewayv2_api.api.api_endpoint}/count"
 }
+
+output "github_actions_role_arn" {
+  value = aws_iam_role.github_actions.arn
+}
