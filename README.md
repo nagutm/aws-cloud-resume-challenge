@@ -12,29 +12,7 @@ Live site: [resume-mufaddal.com](https://resume-mufaddal.com)
 A static resume site served from S3 via CloudFront, with a visitor counter backed by Lambda and DynamoDB.
 
 ```
-                    ┌─────────────┐
-                    │   Browser   │
-                    └──────┬──────┘
-                           │
-              ┌────────────┴────────────┐
-              │                         │
-              ▼                         ▼
-       ┌─────────────┐          ┌──────────────┐
-       │  CloudFront │          │ API Gateway  │
-       │     + S3    │          │  (HTTP API)  │
-       └─────────────┘          └──────┬───────┘
-              ▲                        │
-              │                        ▼
-       ┌──────┴──────┐          ┌─────────────┐
-       │  Route 53   │          │   Lambda    │
-       │  + ACM cert │          │ (Python 3.12)│
-       └─────────────┘          └──────┬──────┘
-                                       │
-                                       ▼
-                                ┌─────────────┐
-                                │  DynamoDB   │
-                                │ visit count │
-                                └─────────────┘
+Diagram will be uploaded here - TBA
 ```
 
 When a visitor loads the page, the browser fetches `index.html` from CloudFront (served from a private S3 bucket via Origin Access Control), then makes a separate `fetch()` to API Gateway. That request invokes a Lambda which atomically increments a counter in DynamoDB and returns the new value.
@@ -88,28 +66,3 @@ Two workflows trigger on path-filtered changes:
 **Frontend** runs on changes to `frontend/**`. It syncs the directory to S3 with `--delete` and creates a CloudFront invalidation.
 
 Authentication uses GitHub OIDC — no long-lived AWS access keys are stored as secrets.
-
-## Local development
-
-Prerequisites: AWS CLI, Terraform 1.10+, Python 3.12.
-
-```bash
-# Backend tests
-cd backend
-python -m venv .venv
-source .venv/bin/activate          # on Windows: .venv\Scripts\Activate.ps1
-pip install -r requirements-dev.txt
-pytest
-
-# Infrastructure
-cd infrastructure/main
-terraform init
-terraform plan
-```
-
-Terraform state is stored in S3 with DynamoDB locking. The `bootstrap/` directory provisioned the state backend and is run once.
-
-## What's not included
-
-- Cloud Practitioner certification (skipped — focus was the build)
-- Blog post (intentionally deferred)
