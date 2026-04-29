@@ -1,9 +1,13 @@
 terraform {
+  backend "s3" {
+    bucket         = "nagutm-resume-tfstate"
+    key            = "main/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "resume-tf-lock"
+  }
+
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
+    aws = { source = "hashicorp/aws", version = "~> 5.0" }
   }
 }
 
