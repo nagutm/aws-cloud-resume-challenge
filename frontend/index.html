@@ -103,6 +103,17 @@
             font-size: 0.9rem;
         }
 
+        .skill-group {
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-group-label {
+            font-weight: 600;
+            color: #444;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
         footer {
             margin-top: 2rem;
             padding-top: 1rem;
@@ -122,20 +133,20 @@
     <div class="container">
         <header>
             <h1>Mufaddal Naguthanawala</h1>
-            <div class="title">Cloud Engineer</div>
+            <div class="title">Cloud / DevOps / Platform Engineer</div>
             <div class="contact">
-                <a href="mailto:jane@example.com">jane@example.com</a>
-                <a href="https://linkedin.com/in/janedoe">LinkedIn</a>
-                <a href="https://github.com/janedoe">GitHub</a>
+                <a href="mailto:m.naguthana@hotmail.com">m.naguthana@hotmail.com</a>
+                <a href="https://linkedin.com/in/mufaddal-naguthanawala">LinkedIn</a>
+                <a href="https://github.com/nagutm">GitHub</a>
             </div>
         </header>
 
         <section>
-            <h2>Summary</h2>
+            <h2>Overview</h2>
             <p>
-                Cloud engineer with experience designing and automating AWS infrastructure.
-                Passionate about infrastructure as code, CI/CD pipelines, and building
-                reliable serverless systems.
+                Master's student in Computer Science with AWS certification and hands-on experience
+                across two software engineering internships building production cloud infrastructure
+                on AWS with Terraform and CI/CD pipelines. Available to start immediately.
             </p>
         </section>
 
@@ -143,53 +154,121 @@
             <h2>Experience</h2>
 
             <div class="job">
-                <h3>Senior Cloud Engineer</h3>
-                <div class="job-meta">Acme Corp &middot; 2022 &ndash; Present</div>
+                <h3>Software Engineering Intern (DataOps)</h3>
+                <div class="job-meta">MasterControl &middot; Salt Lake City, UT &middot; January 2026 &ndash; Present</div>
                 <ul>
-                    <li>Designed and maintained multi-account AWS environments using Terraform.</li>
-                    <li>Built CI/CD pipelines in GitHub Actions deploying to Lambda and ECS.</li>
-                    <li>Reduced monthly cloud costs by 30% through rightsizing and reserved capacity.</li>
+                    <li>Provisioned AWS MWAA (Managed Airflow) environments across dev, stage, and production in multiple regions using Terraform, codifying VPC networking (subnets, route tables, security groups) and IAM policies to enable secure, highly available data orchestration across 30+ pipelines.</li>
+                    <li>Scripted Airflow DAGs in Python to orchestrate dbt transformations and ML pipelines, managing cross-system dependencies across Snowflake and AWS to replace manual workflows and reduce operational runtime by 50%.</li>
+                    <li>Implemented multi-environment CI/CD pipelines in GitHub Actions to automatically sync DAG code to MWAA S3 buckets, reducing deployment cycles from 1+ hour of manual work to under 20 seconds.</li>
+                    <li>Established end-to-end observability for MWAA environments using CloudWatch metrics, custom alerts, and Grafana dashboards to track DAG health, task latency, and worker utilization, reducing incident response time by 80%.</li>
                 </ul>
             </div>
 
             <div class="job">
-                <h3>Cloud Engineer</h3>
-                <div class="job-meta">Widgets Inc &middot; 2019 &ndash; 2022</div>
+                <h3>Software Engineering Intern (Bioinformatics)</h3>
+                <div class="job-meta">Exact Sciences &middot; San Diego, CA &middot; May 2025 &ndash; August 2025</div>
                 <ul>
-                    <li>Migrated legacy on-prem applications to AWS using containerized workloads.</li>
-                    <li>Implemented centralized logging and monitoring with CloudWatch and Grafana.</li>
+                    <li>Migrated bioinformatics pipelines from an on-premises SLURM HPC cluster to AWS HealthOmics using a serverless microservices architecture (Lambda, EventBridge, DynamoDB) that delivered QC metrics to external review systems, reducing infrastructure costs by 30%.</li>
+                    <li>Engineered idempotent Kafka producers with retry logic and dead-letter handling to guarantee at-least-once delivery, processing 15,000 events/day at 99.9% success rate.</li>
+                    <li>Partnered with bioinformaticians and platform engineers to translate scientific QC requirements into system specifications, and authored technical documentation and runbooks that enabled the team to operate and extend the orchestration layer independently.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3>Graduate Research Assistant</h3>
+                <div class="job-meta">Gyori Lab for Computational Biomedicine &middot; Boston, MA &middot; September 2024 &ndash; April 2025</div>
+                <ul>
+                    <li>Evaluated and labeled scientific literature surfaced by an ML relevance-ranking model for the Bioregistry project, generating training data that fed back into model fine-tuning to improve classification performance over successive iterations.</li>
+                    <li>Wrote unit tests with Pytest to validate training data integrity before model ingestion and integrated them into the project's GitHub Actions CI pipeline, catching schema and data quality issues before they affected model performance.</li>
+                    <li>Presented research on ML-driven biocuration at the 2025 Biocuration Conference, showcasing system design for scalable literature classification.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3>Medical Laboratory Scientist</h3>
+                <div class="job-meta">UW Medical Center &middot; Seattle, WA &middot; August 2022 &ndash; June 2024</div>
+                <ul>
+                    <li>Self-taught Python and web development to build a Flask application that automated lab quality control reporting, reducing turnaround time by 2 days and replacing paper-based workflows for the lab team.</li>
+                    <li>Processed patient samples using NGS platforms (Illumina) and reported diagnostic results in a high-volume clinical lab, contributing to lab operations while transitioning into software engineering through self-directed projects.</li>
                 </ul>
             </div>
         </section>
 
         <section>
             <h2>Education</h2>
+
             <div class="education-item">
-                <h3>B.S. in Computer Science</h3>
-                <div class="job-meta">State University &middot; 2015 &ndash; 2019</div>
+                <h3>Master of Science in Computer Science</h3>
+                <div class="job-meta">Northeastern University &middot; Boston, MA &middot; Expected Summer 2026 &middot; GPA: 3.9 / 4.0</div>
+                <p>Coursework: Cloud Computing, Operating Systems, Systems Design, Computer Networking, Data Structures &amp; Algorithms, OOP, Machine Learning</p>
+            </div>
+
+            <div class="education-item">
+                <h3>Bachelor of Science in Medical Laboratory Science</h3>
+                <div class="job-meta">University of Washington &middot; Seattle, WA &middot; September 2018 &ndash; June 2022 &middot; GPA: 3.8 / 4.0</div>
             </div>
         </section>
 
         <section>
             <h2>Certifications</h2>
             <ul>
-                <li>AWS Certified Cloud Practitioner</li>
-                <li>AWS Certified Solutions Architect &ndash; Associate</li>
+                <li>AWS Certified Cloud Practitioner &mdash; December 2025</li>
+                <li>AWS Certified Solutions Architect &ndash; Associate &mdash; Planned June 2026</li>
+                <li>Certified Kubernetes Administrator (CKA) &mdash; Planned August 2026</li>
             </ul>
         </section>
 
         <section>
             <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>AWS</li>
-                <li>Terraform</li>
-                <li>Python</li>
-                <li>Docker</li>
-                <li>GitHub Actions</li>
-                <li>Linux</li>
-                <li>Bash</li>
-                <li>DynamoDB</li>
-            </ul>
+
+            <div class="skill-group">
+                <div class="skill-group-label">Languages</div>
+                <ul class="skills-list">
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>SQL</li>
+                    <li>Bash</li>
+                    <li>HCL</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-label">Cloud &amp; Infrastructure</div>
+                <ul class="skills-list">
+                    <li>AWS</li>
+                    <li>Azure</li>
+                    <li>GCP</li>
+                    <li>Terraform / Terragrunt</li>
+                    <li>CloudFormation</li>
+                    <li>Docker</li>
+                    <li>Kubernetes</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-label">Data &amp; Orchestration</div>
+                <ul class="skills-list">
+                    <li>Airflow / MWAA</li>
+                    <li>Snowflake</li>
+                    <li>Databricks</li>
+                    <li>PostgreSQL</li>
+                    <li>MySQL</li>
+                    <li>Kafka</li>
+                    <li>Flink</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-label">CI/CD &amp; Tooling</div>
+                <ul class="skills-list">
+                    <li>Linux / UNIX</li>
+                    <li>GitHub Actions</li>
+                    <li>Jenkins</li>
+                    <li>Git</li>
+                    <li>Grafana</li>
+                    <li>Prometheus</li>
+                </ul>
+            </div>
         </section>
 
         <footer>
